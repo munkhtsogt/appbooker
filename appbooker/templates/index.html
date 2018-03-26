@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script type="text/javascript">
+<!--
+	$(function(){
+		getAppointments();
+		
+		$('#search-form button[type="submit"]').click(function(){
+			var query = $.trim($('#search-form input[name="query"]').val());
+			getAppointments(query);
+		})
+		
+		$('#add-form button[type="cancel"]').click(function(){
+			$('#add-form')[0].reset();
+			$('#add-form').hide();
+			$('#new-button').show();
+		});
+	});
+	
+	function getAppointments(query = ''){
+		$.ajax({
+			type: 'POST',
+			url: '/getappointments/',
+			data: {
+				query: query,
+			},
+			success: function(response){
+				$('#tbody').html(response);
+			}
+		})
+	}
+	
+	function show(elem) {
+		$('#add-form').show();
+		$(elem).parent().hide();
+	}
+-->
+</script>
+
+<p id="new-button">
+	<a href="javascript:;" onclick="show(this);" class="btn btn-success">new</a>	
+</p>
+
+<form id="add-form" action="/add/" method="POST" style="display: none;">
+	{% csrf_token %}
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="form-group">
+				<button type="submit" class="btn btn-success">Add</button>
+				<button type="cancel" class="btn btn-default">Cancel</button>
+			</div>
+			{{ form.as_p }}
+		</div>
+	</div>
+</form>
+
+
+<form id="search-form" class="form" onsubmit="return false;">
+	<div class="form-group">
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="input-group">
+			  		<input type="text" name="query" class="form-control" placeholder="Type here...">
+				  	<span class="input-group-btn">
+						<button class="btn btn-primary" type="submit">Search</button>
+				  	</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<table class="table table-bordered">
+	<tr>
+		<th>
+			Date
+		</th>
+		<th>
+			Time
+		</th>
+		<th>
+			Description
+		</th>
+	</tr>
+	<tbody id="tbody"></tbody>
+</table>
+{% endblock %}

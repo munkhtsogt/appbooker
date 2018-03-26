@@ -1,0 +1,13 @@
+{% for app in appointments %}
+	<tr>
+		<td>
+			{{ app.date }}
+		</td>
+		<td>
+			{{ app.time }}
+		</td>
+		<td>
+			{{ app.description }}
+		</td>
+	</tr>
+{% endfor %}

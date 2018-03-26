@@ -1,8 +1,6 @@
 # appbooker
-
-<h1>Initial Setup</h1>
-
 <h2>install django 1.8.7</h2>
+
 <ol>
   <li>
     #apt-get install python-django

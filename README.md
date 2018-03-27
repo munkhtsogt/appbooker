@@ -3,7 +3,10 @@
 
 <ol>
   	<li>
-    	apt-get install python-django
+    	In Ubuntu: apt-get install python-django
+  	</li>
+  	<li>
+  		Python2
   	</li>
   	<li>Run the server: python manage.py runserver</li>
   	<li>

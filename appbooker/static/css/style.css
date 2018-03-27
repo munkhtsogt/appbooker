@@ -5,3 +5,8 @@ body {
 .content {
 	margin: 20px;
 }
+
+#add-form {
+	display: none;
+	margin-bottom: 20px;
+}

@@ -1,15 +1,11 @@
 # appbooker
-<h2>install django 1.8.7</h2>
+<h2>Install django 1.8.7</h2>
 
 <ol>
   	<li>
-    	#apt-get install python-django
+    	apt-get install python-django
   	</li>
   	<li>Run the server: python manage.py runserver</li>
-  	<li>
-  		DB migration: python manage.py makemigrations appbooker <br>
-  		python manage.py migrate
-  	</li>
   	<li>
   		Open website in browser at http://localhost:8000 or admin at http://localhost:8000/admin (admin:admin)
 	</li>

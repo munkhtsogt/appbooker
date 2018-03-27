@@ -1,5 +1,6 @@
 body {
 	margin: 0;
+	font-size: 14px;
 }
 
 .content {
@@ -9,4 +10,65 @@ body {
 #add-form {
 	display: none;
 	margin-bottom: 20px;
+}
+
+.table {
+	width: 50%;
+}
+
+.table th {
+	font-weight: 800;
+	font-size: 16px;
+}
+
+#new-button {
+	line-height: 97%;
+}
+
+#appointments {
+	margin-top: 20px;
+}
+
+.btn {
+    border: none;
+    width: 70px;
+    color: white !important;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    color: #fff;
+}
+
+.btn-success {
+	background-color: #5cb85c; /* Green */
+}
+
+.btn-primary {
+	background-color: #428bca;
+}
+
+.btn-default {
+	background-color: #ddd;
+}
+
+.btn-danger {
+	background-color: #d9534f;
+}
+
+form label{
+	font-weight: 800 !important;
+}
+
+input[type="text"] {
+    height: 16px;
+    width: 200px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
 }

@@ -10,7 +10,6 @@
 			var query = $.trim($('#search-form input[name="query"]').val());
 			getAppointments(query);
 		});
-		
 	});
 	
 	function getAppointments(query = ''){
@@ -22,7 +21,7 @@
 			},
 			success: function(response){
 				if(response.length != 0){
-					var $table = $('<table class="table table-bordered">');
+					var $table = $('<table class="table">');
 					var $thead = $('<thead>')
 					var $tr = $('<tr>');
 					$tr.append('<th>Date</th><th>Time</th><th>Description</th>');
@@ -31,7 +30,7 @@
 					for(var i = 0; i < response.length; i++){
 						var data = response[i]['fields'];
 						var date = new Date(data['datetime']);
-						var desc = data['description'];
+						var desc = data['desc'];
 						
 						var locale = "en-us";
 						var month = date.toLocaleString(locale, {month: "long"});
@@ -78,29 +77,17 @@
 
 <form id="add-form" action="/" method="POST">
 	{% csrf_token %}
-	<div class="row">
-		<div class="col-lg-4">
-			<div class="form-group">
-				<button type="submit" class="btn btn-success">Add</button>
-				<a href="javascript:;" onclick="hide();" class="btn btn-default">Cancel</a>
-			</div>
-			{{ form.as_p }}
-		</div>
+	<div>
+		<button type="submit" class="btn btn-success">Add</button>
+		<a href="javascript:;" onclick="hide();" class="btn btn-danger">Cancel</a>
 	</div>
+	{{ form.as_p }}
 </form>
 
-<form id="search-form" class="form" onsubmit="return false;">
-	<div class="form-group">
-		<div class="row">
-			<div class="col-lg-4">
-				<div class="input-group">
-			  		<input type="text" name="query" class="form-control" placeholder="Type here...">
-				  	<span class="input-group-btn">
-						<button class="btn btn-primary" type="submit">Search</button>
-				  	</span>
-				</div>
-			</div>
-		</div>
+<form id="search-form" onsubmit="return false;">
+	<div>
+		<input type="text" name="query" placeholder="Type here...">
+	  	<button class="btn btn-primary" type="submit">Search</button>
 	</div>
 </form>
 

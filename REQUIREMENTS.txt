@@ -1,6 +1,9 @@
 # appbooker
 
-1. Install django 1.8.7
-2. Python2
-2. Run the server: python manage.py runserver
-3. Open website in browser at http://localhost:8000 or admin at http://localhost:8000/admin (admin:admin
+Requirements
+1. Django 1.8.7
+2. Python 2.7
+
+Run the Server
+1. python manage.py runserver
+2. Open website in browser at http://localhost:8000 or admin at http://localhost:8000/admin (admin:admin)

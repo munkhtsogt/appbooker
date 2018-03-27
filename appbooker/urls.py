@@ -19,5 +19,6 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/jsi18n', views.i18n_javascript),
     url(r'^$', views.index, name='index'),
 ]

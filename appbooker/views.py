@@ -6,14 +6,15 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from .models import Appointment
 from .forms import AppointmentForm
+from django.contrib import admin
 
 def index(request):
 	if request.method == 'GET':
 		if request.GET.has_key('query'):
 			query = request.GET['query']
 			q = Q(datetime__contains=query)
-			q.add(Q(description__contains=query), Q.OR)
-			appointments = Appointment.objects.filter(q).order_by('-datetime')[:100]
+			q.add(Q(desc__contains=query), Q.OR)
+			appointments = Appointment.objects.filter(q).order_by('-datetime')
 			appointments = serializers.serialize('json', appointments)
 			return HttpResponse(appointments, content_type='application/json')
 		else:
@@ -27,4 +28,5 @@ def index(request):
 			post.save()
 		return HttpResponseRedirect('/')	
 		
-		
+def i18n_javascript(request):
+	return admin.site.i18n_javascript(request)

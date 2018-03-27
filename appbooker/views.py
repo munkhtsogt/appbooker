@@ -27,6 +27,7 @@ def index(request):
 			post = form.save(commit=False)
 			post.save()
 		return HttpResponseRedirect('/')	
-		
+
+# FOR I18N		
 def i18n_javascript(request):
 	return admin.site.i18n_javascript(request)

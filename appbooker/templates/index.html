@@ -20,37 +20,35 @@
 				query: query,
 			},
 			success: function(response){
-				if(response.length != 0){
-					var $table = $('<table class="table">');
-					var $thead = $('<thead>')
-					var $tr = $('<tr>');
-					$tr.append('<th>Date</th><th>Time</th><th>Description</th>');
-					$thead.append($tr);
-					var $tbody = $('<tbody>');
-					for(var i = 0; i < response.length; i++){
-						var data = response[i]['fields'];
-						var date = new Date(data['datetime']);
-						var desc = data['desc'];
-						
-						var locale = "en-us";
-						var month = date.toLocaleString(locale, {month: "long"});
-						var time = parseTimeFromDate(date);
-						var $tr = $('<tr>')
-						$tr.append('<td>'+ month + ' ' + date.getUTCDate()  +'</td><td>'+ time +'</td><td>'+ desc +'</td>')
-						$tbody.append($tr);
-					}
-					$table.append($thead);
-					$table.append($tbody);
-					$('#appointments').html($table);
+				$('#appointments').empty();
+				var $table = $('<table class="table">');
+				var $thead = $('<thead>')
+				var $tr = $('<tr>');
+				$tr.append('<th>Date</th><th>Time</th><th>Description</th>');
+				$thead.append($tr);
+				var $tbody = $('<tbody>');
+				for(var i = 0; i < response.length; i++){
+					var data = response[i]['fields'];
+					var date = new Date(data['datetime']);
+					var desc = data['desc'];
+					
+					var locale = "en-us";
+					var month = date.toLocaleString(locale, {month: "long"});
+					var time = parseTimeFromDate(date);
+					var $tr = $('<tr>')
+					$tr.append('<td>'+ month + ' ' + date.getUTCDate()  +'</td><td>'+ time +'</td><td>'+ desc +'</td>')
+					$tbody.append($tr);
 				}
-				
+				$table.append($thead);
+				$table.append($tbody);
+				$('#appointments').html($table);
 			}
 		})
 	}
 	
 	function show(elem) {
 		$('#add-form').show();
-		$(elem).parent().hide();
+		$('#new-button').hide();
 	}
 	
 	function hide(){
@@ -72,7 +70,7 @@
 </script>
 
 <p id="new-button">
-	<a href="javascript:;" onclick="show(this);" class="btn btn-success">New</a>	
+	<a href="javascript:;" onclick="show();" class="btn btn-success">New</a>	
 </p>
 
 <form id="add-form" action="/" method="POST">

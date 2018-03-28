@@ -12,7 +12,7 @@ def index(request):
 	if request.method == 'GET':
 		if request.GET.has_key('query'):
 			query = request.GET['query']
-			q = Q(datetime__contains=query)
+			q = Q(datetime__regex=query)
 			q.add(Q(desc__contains=query), Q.OR)
 			appointments = Appointment.objects.filter(q).order_by('-datetime')
 			appointments = serializers.serialize('json', appointments)

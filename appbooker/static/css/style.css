@@ -57,10 +57,6 @@ body {
 	background-color: #d9534f;
 }
 
-form label{
-	font-weight: 800 !important;
-}
-
 input[type="text"] {
     height: 16px;
     width: 200px;
